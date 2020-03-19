@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t mevis3249/udemy-docker-course -f Dockerfile.dev . 
+  - docker build -t mevis3249/udemy-docker-course -f Dockerfile.prod . 
 
 script:
   - docker run -e CI=true mevis3249/udemy-docker-course npm run test

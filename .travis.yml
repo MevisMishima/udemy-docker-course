@@ -7,3 +7,9 @@ before_install:
 
 script:
   - docker run -e CI=true mevis3249/udemy-docker-course npm run test
+
+deploy:
+  provider: azure_web_apps
+  username: $AZURE_WA_USERNAME
+  password: $AZURE_WA_PASSWORD
+  site: "https://udemy-test.azurewebsites.net/"

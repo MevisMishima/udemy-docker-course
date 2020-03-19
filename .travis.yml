@@ -3,13 +3,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t mevismishima/udemy-docker-course -f Dockerfile . 
+  - docker build -t mevismishima/udemy-docker-course -f Dockerfile.dev . 
 
 script:
   - docker run -e CI=true mevismishima/udemy-docker-course npm run test
+
+before_deploy:
+  - docker build -t mevismishima/udemy-docker-course -f Dockerfile .
 
 deploy:
   provider: azure_web_apps
   username: $AZURE_WA_USERNAME
   password: $AZURE_WA_PASSWORD
   site: "https://udemy-test.azurewebsites.net"
+  on:
+    branch: master

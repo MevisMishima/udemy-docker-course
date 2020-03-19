@@ -6,4 +6,4 @@ before_install:
   - docker build -t mevis3249/udemy-docker-course -f Dockerfile.dev . 
 
 script:
-  - docker run mevis3249/udemy-docker-course npm run test -- --coverage
+  - docker run -e CI=true mevis3249/udemy-docker-course npm run test

@@ -6,7 +6,7 @@ before_install:
   - docker build -t mevismishima/udemy-docker-course -f Dockerfile .
 
 script:
-  - docker run mevismishima/udemy-docker-course npm run test -- --coverage
+  - docker run -e CI=true mevismishima/udemy-docker-course npm test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
